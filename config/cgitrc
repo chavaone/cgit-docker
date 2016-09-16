@@ -1,0 +1,6 @@
+# Custom logo and css
+css=/assets/cgit.css
+logo=/assets/logo.png
+
+# Scan repos
+scan-path=/data/git-repos/
