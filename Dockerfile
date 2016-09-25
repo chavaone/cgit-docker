@@ -6,7 +6,8 @@ RUN apk update && \
     apk add nginx \
             fcgiwrap \
             cgit \
-            supervisor && \
+            supervisor \
+            apache2-utils && \
     rm -rf /var/cache/apk/*
 
 VOLUME ["/data/git-repos", "/data/assets"]
@@ -19,6 +20,9 @@ COPY config/assets/cgit.css /data/assets/cgit.css
 COPY config/assets/cgitlogo.png /data/assets/logo.png
 COPY config/supervisord.conf /etc/supervisor.d/conf.ini
 
+COPY config/run.sh /
+RUN chmod +x /run.sh
+
 EXPOSE 80
 
-CMD ["supervisord"]
+CMD ["/run.sh"]
