@@ -1,6 +1,7 @@
 
 CGIT Docker Image
 ====================
+[![Docker Pulls](https://img.shields.io/docker/pulls/chavaone/cgit-docker.svg?maxAge=2592000)](https://hub.docker.com/r/chavaone/cgit-docker/)
 
 [CGIT](http://git.zx2c4.com/cgit/) is an attempt to create a fast web interface for the git scm, using a builtin cache to decrease server io-pressure.
 
@@ -10,13 +11,4 @@ If you want to add some basic authentication to your site you can use CGIT_USER 
 
 This is an example about how to run this container:
 
-    docker run -n cgit  \                                 # Name of the running container
-        -p 8080:80 \                                      # Expose 80 port as 8080
-        --privileged \                                    # THIS IS A MUST
-        -e SITE_TITLE="Awesome CGIT website" \            # Title of the root site
-        -e SITE_DESC="This is an awesome cgit website" \  # Description of the root site
-        -e CGIT_USER=user \                               # User for basic authentication
-        -e CGIT_PASS=p4ssw0rd \                           # Password for basic authentication
-        -v /path/to/git/repos:/data/git-repos \           # Volume for git repositories
-        -v /path/to/site/assets:/data/assets \            # Volume for assets
-        6600c5882fd8
+    docker run --name cgit -p 8080:80 --privileged -e SITE_TITLE="Awesome CGIT website" -e SITE_DESC="This is an awesome cgit website" -e CGIT_USER=user -e CGIT_PASS=p4ssw0rd -v /path/to/git/repos:/data/git-repos -v /path/to/site/assets:/data/assets chavaone/cgit-docker
